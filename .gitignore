@@ -1,6 +1,4 @@
 /.gradle/
-<<<<<<< HEAD
-
 
 .properties
 .project
@@ -62,4 +60,3 @@ project/
 
 # Compiled class file
 *.class
->>>>>>> eddbfaa4cc0b71b2b85b21fec1eaa688c2d7ff84
