@@ -1,4 +1,5 @@
 /.gradle/
+<<<<<<< HEAD
 
 
 .properties
@@ -30,3 +31,35 @@ project/
 
 # Compiled class file
 *.class
+=======
+
+.properties
+.project
+.classpath
+.settings/
+.gradle/
+bin/
+project/
+/build/
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Compiled class file
+*.class
+>>>>>>> eddbfaa4cc0b71b2b85b21fec1eaa688c2d7ff84
