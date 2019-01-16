@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -62,9 +62,9 @@ public class Ouvrage implements Serializable
 	@JoinTable(name = "ouvrage_auteur", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_auteur"))
 	private List<Auteur> auteurs;
 	
-	@OneToMany(cascade = {CascadeType.ALL})
-	@JoinColumn(name="nom_editeur")
-	private List<Editeur> nomEditeur;
+	@ManyToOne
+	@JoinColumn(name="idEditeur")
+	private Editeur editeur;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "ouvrage_genre", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_genre"))
@@ -78,7 +78,7 @@ public class Ouvrage implements Serializable
 	public Ouvrage(int idOuvrage, @Size(max = 50) String titre, @Size(max = 13) int isbn,
 			@Size(max = 100) String imagecouv, @Size(max = 255) String sujet, @Size(max = 255) String description,
 			@Size(max = 10) String langue, @Size(max = 4) int anneeParution, int quantiteStock, double prixNeuf,
-			double prixVente, List<Auteur> auteurs, List<Editeur> nomEditeur, List<Genre> genres) {
+			double prixVente, List<Auteur> auteurs, Editeur editeur, List<Genre> genres) {
 		super();
 		this.idOuvrage = idOuvrage;
 		this.titre = titre;
@@ -92,7 +92,7 @@ public class Ouvrage implements Serializable
 		this.prixNeuf = prixNeuf;
 		this.prixVente = prixVente;
 		this.auteurs = auteurs;
-		this.nomEditeur = nomEditeur;
+		this.editeur = editeur;
 		this.genres = genres;
 	}
 
@@ -192,12 +192,12 @@ public class Ouvrage implements Serializable
 		this.auteurs = auteurs;
 	}
 
-	public List<Editeur> getNomEditeur() {
-		return nomEditeur;
+	public Editeur getEditeur() {
+		return editeur;
 	}
 
-	public void setNomEditeur(List<Editeur> nomEditeur) {
-		this.nomEditeur = nomEditeur;
+	public void setEditeur(Editeur editeur) {
+		this.editeur = editeur;
 	}
 
 	public List<Genre> getGenres() {
@@ -220,7 +220,7 @@ public class Ouvrage implements Serializable
 		result = prime * result + ((imagecouv == null) ? 0 : imagecouv.hashCode());
 		result = prime * result + isbn;
 		result = prime * result + ((langue == null) ? 0 : langue.hashCode());
-		result = prime * result + ((nomEditeur == null) ? 0 : nomEditeur.hashCode());
+		result = prime * result + ((editeur == null) ? 0 : editeur.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(prixNeuf);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -272,10 +272,10 @@ public class Ouvrage implements Serializable
 				return false;
 		} else if (!langue.equals(other.langue))
 			return false;
-		if (nomEditeur == null) {
-			if (other.nomEditeur != null)
+		if (editeur == null) {
+			if (other.editeur != null)
 				return false;
-		} else if (!nomEditeur.equals(other.nomEditeur))
+		} else if (!editeur.equals(other.editeur))
 			return false;
 		if (Double.doubleToLongBits(prixNeuf) != Double.doubleToLongBits(other.prixNeuf))
 			return false;
