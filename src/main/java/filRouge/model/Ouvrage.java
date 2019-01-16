@@ -1,8 +1,10 @@
 package filRouge.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,9 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.TableGenerator;
-
-import org.hibernate.annotations.ManyToAny;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Ouvrage implements Serializable
@@ -20,28 +20,50 @@ public class Ouvrage implements Serializable
 
 	private static final long serialVersionUID = 1L;
 	
-	@TableGenerator(name = "ouvrage_gen", table = "id_gen", pkColumnName = "gen_name", valueColumnName = "gen_val", allocationSize = 100)
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE, generator = "ouvrage_gen")
+	@GeneratedValue(strategy=GenerationType.TABLE)
+	@Column(name = "id_ouvrage")
 	private int idOuvrage;
+	
+	@Size(max = 50)
 	private String titre;
+	
+	@Size(max = 13)
 	private int isbn;
+	
+	@Size(max = 100)
+	@Column(name = "image_couv")
 	private String imagecouv;
+	
+	@Size(max = 255)
 	private String description;
+	
+	@Size(max = 10)
 	private String langue;
+	
+	@Size(max = 4)
+	@Column(name = "annee_parution")
 	private int anneeParution;
+	
+	@Column(name = "quantite_stock")
 	private int quantiteStock;
+	
+	@Column(name = "prix_neuf")
 	private double prixNeuf;
+	
+	@Column(name = "prix_vente")
 	private double prixVente;
 	
 	@ManyToMany(cascade = CascadeType.PERSIST)
-	@JoinTable(name = "ouvrage_auteur", joinColumns = @joi  (name = "idouvrage"), inverseJoinColumns = @JoinColumn(name = "idauteur"))
+	@JoinTable(name = "ouvrage_auteur", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_auteur"))
 	private List<Auteur> auteurs;
 	
 	@ManyToMany(cascade = CascadeType.PERSIST)
-	@JoinTable(name = "ouvrage_editeur", joinColumns = @JoinColumn(name = "idouvrage"), inverseJoinColumns = @JoinColumn(name = "idediteur"))
+	@JoinTable(name = "ouvrage_editeur", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_editeur"))
 	private List<Editeur> editeurs;
 	
+	@ManyToMany(cascade = CascadeType.PERSIST)
+	@JoinTable(name = "ouvrage_auteur", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_genre"))
 	private List<Genre> genres;
 	
 	public Ouvrage()
@@ -49,35 +71,43 @@ public class Ouvrage implements Serializable
 	
 	}
 
-	public int getIdOuvrage() {
+	public int getIdOuvrage()
+	{
 		return idOuvrage;
 	}
 
-	public void setIdOuvrage(int idOuvrage) {
+	public void setIdOuvrage(int idOuvrage)
+	{
 		this.idOuvrage = idOuvrage;
 	}
 
-	public String getTitre() {
+	public String getTitre()
+	{
 		return titre;
 	}
 
-	public void setTitre(String titre) {
+	public void setTitre(String titre)
+	{
 		this.titre = titre;
 	}
 
-	public int getIsbn() {
+	public int getIsbn()
+	{
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(int isbn)
+	{
 		this.isbn = isbn;
 	}
 
-	public String getImagecouv() {
+	public String getImagecouv()
+	{
 		return imagecouv;
 	}
 
-	public void setImagecouv(String imagecouv) {
+	public void setImagecouv(String imagecouv)
+	{
 		this.imagecouv = imagecouv;
 	}
 
@@ -85,39 +115,48 @@ public class Ouvrage implements Serializable
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(String description)
+	{
 		this.description = description;
 	}
 
-	public String getLangue() {
+	public String getLangue()
+	{
 		return langue;
 	}
 
-	public void setLangue(String langue) {
+	public void setLangue(String langue)
+	{
 		this.langue = langue;
 	}
 
-	public int getAnneeParution() {
+	public int getAnneeParution()
+	{
 		return anneeParution;
 	}
 
-	public void setAnneeParution(int anneeParution) {
+	public void setAnneeParution(int anneeParution)
+	{
 		this.anneeParution = anneeParution;
 	}
 
-	public int getQuantiteStock() {
+	public int getQuantiteStock()
+	{
 		return quantiteStock;
 	}
 
-	public void setQuantiteStock(int quantiteStock) {
+	public void setQuantiteStock(int quantiteStock)
+	{
 		this.quantiteStock = quantiteStock;
 	}
 
-	public double getPrixNeuf() {
+	public double getPrixNeuf()
+	{
 		return prixNeuf;
 	}
 
-	public void setPrixNeuf(double prixNeuf) {
+	public void setPrixNeuf(double prixNeuf)
+	{
 		this.prixNeuf = prixNeuf;
 	}
 
@@ -125,12 +164,14 @@ public class Ouvrage implements Serializable
 		return prixVente;
 	}
 
-	public void setPrixVente(double prixVente) {
+	public void setPrixVente(double prixVente)
+	{
 		this.prixVente = prixVente;
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + anneeParution;
@@ -150,7 +191,8 @@ public class Ouvrage implements Serializable
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
