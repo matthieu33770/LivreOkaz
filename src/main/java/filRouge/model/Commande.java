@@ -10,7 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -23,8 +24,8 @@ public class Commande implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
-	@Column(name = "id_ouvrage")
-	private int idOuvrage;
+	@Column(name = "id_commande")
+	private int idCommande;
 	
 	@Size(max = 10)
 	@Column(name = "date")
@@ -50,7 +51,63 @@ public class Commande implements Serializable{
 	@Column(name = "total")
 	private Double total;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="id_client")
-	private Users id_client;
+	private Users idClient;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="nom_client")
+	private Users nomClient;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="prenom_client")
+	private Users prenomClient;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="numeroFacturation")
+	private Users numeroFacturation;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="rueFacturation")
+	private Users rueFacturation;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="complementFacturation")
+	private Users complementFacturation;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="cpFacturation")
+	private Users cpFacturation;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="villeFacturation")
+	private Users villeFacturation;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="numeroLivraison")
+	private Users numeroLivraison;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="rueLivraison")
+	private Users rueLivraison;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="complementLivraison")
+	private Users complementLivraison;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="cpLivraison")
+	private Users cpLivraison;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="villeLivraison")
+	private Users villeLivraison;
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name="ouvrage")
+	private Ouvrage titre;
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name="quantite")
+	private Ouvrage quantite;
 }
