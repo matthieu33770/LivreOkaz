@@ -1,13 +1,13 @@
 package filRouge.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 public class Editeur implements Serializable
@@ -24,9 +24,8 @@ public class Editeur implements Serializable
 	@Column(name = "nom_editeur")
 	private String nomEditeur;
 	
-	@ManyToOne
-	@JoinColumn(name="id_ouvrage")
-	private Ouvrage ouvrage;
+	@OneToMany(mappedBy="id_ouvrage")
+	private List<Ouvrage> ouvrages;
 	
 	public Editeur()
 	{
@@ -49,12 +48,12 @@ public class Editeur implements Serializable
 		this.nomEditeur = nomEditeur;
 	}
 
-	public Ouvrage getOuvrage() {
-		return ouvrage;
+	public List<Ouvrage> getOuvrages() {
+		return ouvrages;
 	}
 
-	public void setOuvrage(Ouvrage ouvrage) {
-		this.ouvrage = ouvrage;
+	public void setOuvrages(List<Ouvrage> ouvrages) {
+		this.ouvrages = ouvrages;
 	}
 
 	@Override
@@ -63,7 +62,7 @@ public class Editeur implements Serializable
 		int result = 1;
 		result = prime * result + idEditeur;
 		result = prime * result + ((nomEditeur == null) ? 0 : nomEditeur.hashCode());
-		result = prime * result + ((ouvrage == null) ? 0 : ouvrage.hashCode());
+		result = prime * result + ((ouvrages == null) ? 0 : ouvrages.hashCode());
 		return result;
 	}
 
@@ -83,10 +82,10 @@ public class Editeur implements Serializable
 				return false;
 		} else if (!nomEditeur.equals(other.nomEditeur))
 			return false;
-		if (ouvrage == null) {
-			if (other.ouvrage != null)
+		if (ouvrages == null) {
+			if (other.ouvrages != null)
 				return false;
-		} else if (!ouvrage.equals(other.ouvrage))
+		} else if (!ouvrages.equals(other.ouvrages))
 			return false;
 		return true;
 	}
