@@ -62,7 +62,8 @@ public class Ouvrage implements Serializable
 	@JoinTable(name = "ouvrage_auteur", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_auteur"))
 	private List<Auteur> auteurs;
 	
-	@OneToMany(mappedBy = "editeur")
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name="nom_editeur")
 	private List<Editeur> nomEditeur;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
