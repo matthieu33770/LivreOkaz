@@ -1,15 +1,15 @@
 package filRouge.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
+@Entity
 public class Editeur implements Serializable
 {
 
@@ -24,37 +24,43 @@ public class Editeur implements Serializable
 	@Column(name = "nom_editeur")
 	private String nomEditeur;
 	
-	@OneToMany(mappedBy="id_ouvrage")
-	private List<Ouvrage> ouvrages;
-	
 	public Editeur()
 	{
 	
 	}
+	
+	
+
+	public Editeur(@Size(max = 20) String nomEditeur) {
+		super();
+		this.nomEditeur = nomEditeur;
+	}
+
+
 
 	public int getIdEditeur() {
 		return idEditeur;
 	}
 
+
+
 	public void setIdEditeur(int idEditeur) {
 		this.idEditeur = idEditeur;
 	}
+
+
 
 	public String getNomEditeur() {
 		return nomEditeur;
 	}
 
+
+
 	public void setNomEditeur(String nomEditeur) {
 		this.nomEditeur = nomEditeur;
 	}
 
-	public List<Ouvrage> getOuvrages() {
-		return ouvrages;
-	}
 
-	public void setOuvrages(List<Ouvrage> ouvrages) {
-		this.ouvrages = ouvrages;
-	}
 
 	@Override
 	public int hashCode() {
@@ -62,9 +68,10 @@ public class Editeur implements Serializable
 		int result = 1;
 		result = prime * result + idEditeur;
 		result = prime * result + ((nomEditeur == null) ? 0 : nomEditeur.hashCode());
-		result = prime * result + ((ouvrages == null) ? 0 : ouvrages.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -82,13 +89,10 @@ public class Editeur implements Serializable
 				return false;
 		} else if (!nomEditeur.equals(other.nomEditeur))
 			return false;
-		if (ouvrages == null) {
-			if (other.ouvrages != null)
-				return false;
-		} else if (!ouvrages.equals(other.ouvrages))
-			return false;
 		return true;
 	}
+
+
 
 	
 	

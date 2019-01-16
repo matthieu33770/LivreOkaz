@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
@@ -66,10 +65,6 @@ public class Ouvrage implements Serializable
 	@OneToMany(mappedBy = "editeur")
 	private List<Editeur> editeurs;
 	
-	@ManyToOne
-	@JoinColumn(name="id_editeur")
-	private Editeur editeur;
-	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "ouvrage_genre", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_genre"))
 	private List<Genre> genres;
@@ -82,7 +77,7 @@ public class Ouvrage implements Serializable
 	public Ouvrage(int idOuvrage, @Size(max = 50) String titre, @Size(max = 13) int isbn,
 			@Size(max = 100) String imagecouv, @Size(max = 255) String sujet, @Size(max = 255) String description,
 			@Size(max = 10) String langue, @Size(max = 4) int anneeParution, int quantiteStock, double prixNeuf,
-			double prixVente, List<Auteur> auteurs, List<Editeur> editeurs, Editeur editeur, List<Genre> genres) {
+			double prixVente, List<Auteur> auteurs, List<Editeur> editeurs, List<Genre> genres) {
 		super();
 		this.idOuvrage = idOuvrage;
 		this.titre = titre;
@@ -97,7 +92,6 @@ public class Ouvrage implements Serializable
 		this.prixVente = prixVente;
 		this.auteurs = auteurs;
 		this.editeurs = editeurs;
-		this.editeur = editeur;
 		this.genres = genres;
 	}
 
@@ -205,14 +199,6 @@ public class Ouvrage implements Serializable
 		this.editeurs = editeurs;
 	}
 
-	public Editeur getEditeur() {
-		return editeur;
-	}
-
-	public void setEditeur(Editeur editeur) {
-		this.editeur = editeur;
-	}
-
 	public List<Genre> getGenres() {
 		return genres;
 	}
@@ -228,7 +214,6 @@ public class Ouvrage implements Serializable
 		result = prime * result + anneeParution;
 		result = prime * result + ((auteurs == null) ? 0 : auteurs.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((editeur == null) ? 0 : editeur.hashCode());
 		result = prime * result + ((editeurs == null) ? 0 : editeurs.hashCode());
 		result = prime * result + ((genres == null) ? 0 : genres.hashCode());
 		result = prime * result + idOuvrage;
@@ -266,11 +251,6 @@ public class Ouvrage implements Serializable
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
-			return false;
-		if (editeur == null) {
-			if (other.editeur != null)
-				return false;
-		} else if (!editeur.equals(other.editeur))
 			return false;
 		if (editeurs == null) {
 			if (other.editeurs != null)
@@ -315,8 +295,6 @@ public class Ouvrage implements Serializable
 		return true;
 	}
 
-	
-	
 	
 	
 }
