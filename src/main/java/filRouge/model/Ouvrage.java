@@ -66,7 +66,7 @@ public class Ouvrage implements Serializable
 	private List<Editeur> editeurs;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "ouvrage_auteur", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_genre"))
+	@JoinTable(name = "ouvrage_genre", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_genre"))
 	private List<Genre> genres;
 	
 	public Ouvrage()
