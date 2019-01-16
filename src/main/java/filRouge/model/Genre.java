@@ -17,7 +17,7 @@ public class Genre implements Serializable
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_genre")
 	private int idGenre;
 	
