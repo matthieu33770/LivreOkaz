@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -61,8 +62,7 @@ public class Ouvrage implements Serializable
 	@JoinTable(name = "ouvrage_auteur", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_auteur"))
 	private List<Auteur> auteurs;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "ouvrage_editeur", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_editeur"))
+	@OneToMany(mappedBy = "editeur")
 	private List<Editeur> editeurs;
 	
 	@ManyToMany(cascade = CascadeType.ALL)

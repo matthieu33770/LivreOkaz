@@ -1,15 +1,14 @@
 package filRouge.model;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -27,8 +26,9 @@ public class Genre implements Serializable
 	@Column(name = "type_genre")
 	private String typeGenre;
 	
-	@ManyToMany(mappedBy = "genres", cascade = CascadeType.PERSIST)
-	private List<Ouvrage> ouvrages;
+	@ManyToOne
+	@JoinColumn(name="id_ouvrage")
+	private Ouvrage ouvrage;
 
 	public Genre()
 	{
@@ -55,14 +55,14 @@ public class Genre implements Serializable
 		this.typeGenre = typeGenre;
 	}
 
-	public List<Ouvrage> getOuvrages()
+	public Ouvrage getOuvrage()
 	{
-		return ouvrages;
+		return ouvrage;
 	}
 
-	public void setOuvrages(List<Ouvrage> ouvrages)
+	public void setOuvrage(Ouvrage ouvrage)
 	{
-		this.ouvrages = ouvrages;
+		this.ouvrage = ouvrage;
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class Genre implements Serializable
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idGenre;
-		result = prime * result + ((ouvrages == null) ? 0 : ouvrages.hashCode());
+		result = prime * result + ((ouvrage == null) ? 0 : ouvrage.hashCode());
 		result = prime * result + ((typeGenre == null) ? 0 : typeGenre.hashCode());
 		return result;
 	}
@@ -88,10 +88,10 @@ public class Genre implements Serializable
 		Genre other = (Genre) obj;
 		if (idGenre != other.idGenre)
 			return false;
-		if (ouvrages == null) {
-			if (other.ouvrages != null)
+		if (ouvrage == null) {
+			if (other.ouvrage != null)
 				return false;
-		} else if (!ouvrages.equals(other.ouvrages))
+		} else if (!ouvrage.equals(other.ouvrage))
 			return false;
 		if (typeGenre == null) {
 			if (other.typeGenre != null)
