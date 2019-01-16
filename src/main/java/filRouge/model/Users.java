@@ -81,9 +81,23 @@ public class Users implements Serializable{
 	@Column(name = "telephone")
 	private Integer telephone;
 	
+	@Size(max = 50)
+	@Column(name = "mdp")
+	private String mdp;
+	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="id_role")
 	private Role habilitation;
+
+	
+	
+	public String getMdp() {
+		return mdp;
+	}
+
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
 
 	public Integer getId() {
 		return id;
@@ -217,21 +231,13 @@ public class Users implements Serializable{
 	}
 
 	public Users(Integer id, @Size(max = 100) String nom, @Size(max = 100) String prenom, @Size(max = 255) String email,
-			Role habilitation) {
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.habilitation = habilitation;
-	}
-
-	public Users(Integer id, @Size(max = 100) String nom, @Size(max = 100) String prenom, @Size(max = 255) String email,
 			@Size(max = 3) Integer numeroFacturation, @Size(max = 255) String rueFacturation,
 			@Size(max = 255) String complementFacturation, @Size(max = 5) Integer cpFacturation,
 			@Size(max = 255) String villeFacturation, @Size(max = 3) Integer numeroLivraison,
 			@Size(max = 255) String rueLivraison, @Size(max = 255) String complementLivraison,
 			@Size(max = 5) Integer cpLivraison, @Size(max = 255) String villeLivraison,
-			@Size(max = 12) Integer telephone, Role habilitation) {
+			@Size(max = 12) Integer telephone, @Size(max = 50) String mdp, Role habilitation) {
+		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -247,7 +253,21 @@ public class Users implements Serializable{
 		this.cpLivraison = cpLivraison;
 		this.villeLivraison = villeLivraison;
 		this.telephone = telephone;
+		this.mdp = mdp;
 		this.habilitation = habilitation;
 	}
+
+	public Users(Integer id, @Size(max = 100) String nom, @Size(max = 100) String prenom, @Size(max = 255) String email,
+			@Size(max = 50) String mdp, Role habilitation) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.mdp = mdp;
+		this.habilitation = habilitation;
+	}
+
+	
 	
 }
