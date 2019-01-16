@@ -70,6 +70,31 @@ public class Ouvrage implements Serializable
 	{
 	
 	}
+	
+	
+
+	public Ouvrage(int idOuvrage, @Size(max = 50) String titre, @Size(max = 13) int isbn,
+			@Size(max = 100) String imagecouv, @Size(max = 255) String description, @Size(max = 10) String langue,
+			@Size(max = 4) int anneeParution, int quantiteStock, double prixNeuf, double prixVente,
+			List<Auteur> auteurs, List<Editeur> editeurs, List<Genre> genres)
+	{
+		super();
+		this.idOuvrage = idOuvrage;
+		this.titre = titre;
+		this.isbn = isbn;
+		this.imagecouv = imagecouv;
+		this.description = description;
+		this.langue = langue;
+		this.anneeParution = anneeParution;
+		this.quantiteStock = quantiteStock;
+		this.prixNeuf = prixNeuf;
+		this.prixVente = prixVente;
+		this.auteurs = auteurs;
+		this.editeurs = editeurs;
+		this.genres = genres;
+	}
+
+
 
 	public int getIdOuvrage()
 	{
