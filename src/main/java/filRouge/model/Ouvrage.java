@@ -63,7 +63,7 @@ public class Ouvrage implements Serializable
 	private List<Auteur> auteurs;
 	
 	@OneToMany(mappedBy = "editeur")
-	private List<Editeur> editeurs;
+	private List<Editeur> nomEditeur;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "ouvrage_genre", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_genre"))
@@ -77,7 +77,7 @@ public class Ouvrage implements Serializable
 	public Ouvrage(int idOuvrage, @Size(max = 50) String titre, @Size(max = 13) int isbn,
 			@Size(max = 100) String imagecouv, @Size(max = 255) String sujet, @Size(max = 255) String description,
 			@Size(max = 10) String langue, @Size(max = 4) int anneeParution, int quantiteStock, double prixNeuf,
-			double prixVente, List<Auteur> auteurs, List<Editeur> editeurs, List<Genre> genres) {
+			double prixVente, List<Auteur> auteurs, List<Editeur> nomEditeur, List<Genre> genres) {
 		super();
 		this.idOuvrage = idOuvrage;
 		this.titre = titre;
@@ -91,7 +91,7 @@ public class Ouvrage implements Serializable
 		this.prixNeuf = prixNeuf;
 		this.prixVente = prixVente;
 		this.auteurs = auteurs;
-		this.editeurs = editeurs;
+		this.nomEditeur = nomEditeur;
 		this.genres = genres;
 	}
 
@@ -191,12 +191,12 @@ public class Ouvrage implements Serializable
 		this.auteurs = auteurs;
 	}
 
-	public List<Editeur> getEditeurs() {
-		return editeurs;
+	public List<Editeur> getNomEditeur() {
+		return nomEditeur;
 	}
 
-	public void setEditeurs(List<Editeur> editeurs) {
-		this.editeurs = editeurs;
+	public void setNomEditeur(List<Editeur> nomEditeur) {
+		this.nomEditeur = nomEditeur;
 	}
 
 	public List<Genre> getGenres() {
@@ -214,12 +214,12 @@ public class Ouvrage implements Serializable
 		result = prime * result + anneeParution;
 		result = prime * result + ((auteurs == null) ? 0 : auteurs.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((editeurs == null) ? 0 : editeurs.hashCode());
 		result = prime * result + ((genres == null) ? 0 : genres.hashCode());
 		result = prime * result + idOuvrage;
 		result = prime * result + ((imagecouv == null) ? 0 : imagecouv.hashCode());
 		result = prime * result + isbn;
 		result = prime * result + ((langue == null) ? 0 : langue.hashCode());
+		result = prime * result + ((nomEditeur == null) ? 0 : nomEditeur.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(prixNeuf);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -252,11 +252,6 @@ public class Ouvrage implements Serializable
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (editeurs == null) {
-			if (other.editeurs != null)
-				return false;
-		} else if (!editeurs.equals(other.editeurs))
-			return false;
 		if (genres == null) {
 			if (other.genres != null)
 				return false;
@@ -275,6 +270,11 @@ public class Ouvrage implements Serializable
 			if (other.langue != null)
 				return false;
 		} else if (!langue.equals(other.langue))
+			return false;
+		if (nomEditeur == null) {
+			if (other.nomEditeur != null)
+				return false;
+		} else if (!nomEditeur.equals(other.nomEditeur))
 			return false;
 		if (Double.doubleToLongBits(prixNeuf) != Double.doubleToLongBits(other.prixNeuf))
 			return false;
@@ -295,6 +295,7 @@ public class Ouvrage implements Serializable
 		return true;
 	}
 
+	
 	
 	
 }
