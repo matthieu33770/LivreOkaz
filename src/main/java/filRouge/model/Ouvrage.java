@@ -36,6 +36,9 @@ public class Ouvrage implements Serializable
 	private String imagecouv;
 	
 	@Size(max = 255)
+	private String sujet;
+	
+	@Size(max = 255)
 	private String description;
 	
 	@Size(max = 10)
@@ -70,19 +73,18 @@ public class Ouvrage implements Serializable
 	{
 	
 	}
-	
-	
 
 	public Ouvrage(int idOuvrage, @Size(max = 50) String titre, @Size(max = 13) int isbn,
-			@Size(max = 100) String imagecouv, @Size(max = 255) String description, @Size(max = 10) String langue,
-			@Size(max = 4) int anneeParution, int quantiteStock, double prixNeuf, double prixVente,
-			List<Auteur> auteurs, List<Editeur> editeurs, List<Genre> genres)
+			@Size(max = 100) String imagecouv, @Size(max = 255) String sujet, @Size(max = 255) String description,
+			@Size(max = 10) String langue, @Size(max = 4) int anneeParution, int quantiteStock, double prixNeuf,
+			double prixVente, List<Auteur> auteurs, List<Editeur> editeurs, List<Genre> genres)
 	{
 		super();
 		this.idOuvrage = idOuvrage;
 		this.titre = titre;
 		this.isbn = isbn;
 		this.imagecouv = imagecouv;
+		this.sujet = sujet;
 		this.description = description;
 		this.langue = langue;
 		this.anneeParution = anneeParution;
@@ -93,8 +95,6 @@ public class Ouvrage implements Serializable
 		this.editeurs = editeurs;
 		this.genres = genres;
 	}
-
-
 
 	public int getIdOuvrage()
 	{
@@ -136,7 +136,18 @@ public class Ouvrage implements Serializable
 		this.imagecouv = imagecouv;
 	}
 
-	public String getDescription() {
+	public String getSujet()
+	{
+		return sujet;
+	}
+
+	public void setSujet(String sujet)
+	{
+		this.sujet = sujet;
+	}
+
+	public String getDescription()
+	{
 		return description;
 	}
 
@@ -185,7 +196,8 @@ public class Ouvrage implements Serializable
 		this.prixNeuf = prixNeuf;
 	}
 
-	public double getPrixVente() {
+	public double getPrixVente()
+	{
 		return prixVente;
 	}
 
@@ -194,13 +206,46 @@ public class Ouvrage implements Serializable
 		this.prixVente = prixVente;
 	}
 
+	public List<Auteur> getAuteurs()
+	{
+		return auteurs;
+	}
+
+	public void setAuteurs(List<Auteur> auteurs)
+	{
+		this.auteurs = auteurs;
+	}
+
+	public List<Editeur> getEditeurs()
+	{
+		return editeurs;
+	}
+
+	public void setEditeurs(List<Editeur> editeurs)
+	{
+		this.editeurs = editeurs;
+	}
+
+	public List<Genre> getGenres()
+	{
+		return genres;
+	}
+
+	public void setGenres(List<Genre> genres)
+	{
+		this.genres = genres;
+	}
+
 	@Override
 	public int hashCode()
 	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + anneeParution;
+		result = prime * result + ((auteurs == null) ? 0 : auteurs.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((editeurs == null) ? 0 : editeurs.hashCode());
+		result = prime * result + ((genres == null) ? 0 : genres.hashCode());
 		result = prime * result + idOuvrage;
 		result = prime * result + ((imagecouv == null) ? 0 : imagecouv.hashCode());
 		result = prime * result + isbn;
@@ -211,6 +256,7 @@ public class Ouvrage implements Serializable
 		temp = Double.doubleToLongBits(prixVente);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + quantiteStock;
+		result = prime * result + ((sujet == null) ? 0 : sujet.hashCode());
 		result = prime * result + ((titre == null) ? 0 : titre.hashCode());
 		return result;
 	}
@@ -227,10 +273,25 @@ public class Ouvrage implements Serializable
 		Ouvrage other = (Ouvrage) obj;
 		if (anneeParution != other.anneeParution)
 			return false;
+		if (auteurs == null) {
+			if (other.auteurs != null)
+				return false;
+		} else if (!auteurs.equals(other.auteurs))
+			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
+			return false;
+		if (editeurs == null) {
+			if (other.editeurs != null)
+				return false;
+		} else if (!editeurs.equals(other.editeurs))
+			return false;
+		if (genres == null) {
+			if (other.genres != null)
+				return false;
+		} else if (!genres.equals(other.genres))
 			return false;
 		if (idOuvrage != other.idOuvrage)
 			return false;
@@ -252,6 +313,11 @@ public class Ouvrage implements Serializable
 			return false;
 		if (quantiteStock != other.quantiteStock)
 			return false;
+		if (sujet == null) {
+			if (other.sujet != null)
+				return false;
+		} else if (!sujet.equals(other.sujet))
+			return false;
 		if (titre == null) {
 			if (other.titre != null)
 				return false;
@@ -259,5 +325,8 @@ public class Ouvrage implements Serializable
 			return false;
 		return true;
 	}
-
+	
+	
+	
+	
 }
