@@ -2,6 +2,7 @@ package filRouge.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -105,9 +106,10 @@ public class Commande implements Serializable{
 	
 	@OneToMany(cascade = {CascadeType.ALL})
 	@JoinColumn(name="ouvrage")
-	private Ouvrage titre;
+	private List<Ouvrage> ouvrages;
 	
 	@OneToMany(cascade = {CascadeType.ALL})
 	@JoinColumn(name="quantite")
-	private Ouvrage quantite;
+	private List<Ouvrage> quantite;
+
 }
