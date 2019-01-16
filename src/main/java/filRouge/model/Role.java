@@ -23,7 +23,7 @@ public class Role implements Serializable{
 	@Column(name="id_role")
 	private long idRole;
 	
-	@Size(max = 10)
+	@Size(max = 20)
 	@Column(name="fonction")
 	private String fonction;
 
