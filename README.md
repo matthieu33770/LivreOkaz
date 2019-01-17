@@ -15,4 +15,4 @@ Mise en place d'un Trello dès le début pour organiser les tâches à faire, en
 Réunion en début de journée pour se coordonner sur les tâches à réaliser dans la journée. Point informel en milieu de journée (lors de la pause méridien en général). Entraide tout au long de la journée !
 
 ## Création du MCD :
-![alt text](https://github.com/matthieu33770/LivreOkaz/src/main/resources/blob/master/MCD.jpg)
+![alt text](https://github.com/matthieu33770/LivreOkaz/src/main/resources/MCD.jpg)
