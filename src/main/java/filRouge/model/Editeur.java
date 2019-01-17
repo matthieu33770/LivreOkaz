@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Size;
 
 @Entity
 public class Editeur implements Serializable
@@ -18,9 +17,8 @@ public class Editeur implements Serializable
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_editeur")
-	private int idEditeur;
-	
-	@Size(max = 20)
+	private Integer idEditeur;
+
 	@Column(name = "nom_editeur")
 	private String nomEditeur;
 	
@@ -28,46 +26,34 @@ public class Editeur implements Serializable
 	{
 	
 	}
-	
-	public Editeur(@Size(max = 20) String nomEditeur)
-	{
-		super();
-		this.nomEditeur = nomEditeur;
-	}
 
-	public int getIdEditeur()
-	{
+	public Integer getIdEditeur() {
 		return idEditeur;
 	}
 
-	public void setIdEditeur(int idEditeur)
-	{
+	public void setIdEditeur(Integer idEditeur) {
 		this.idEditeur = idEditeur;
 	}
 
-	public String getNomEditeur()
-	{
+	public String getNomEditeur() {
 		return nomEditeur;
 	}
 
-	public void setNomEditeur(String nomEditeur)
-	{
+	public void setNomEditeur(String nomEditeur) {
 		this.nomEditeur = nomEditeur;
 	}
 
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idEditeur;
+		result = prime * result + ((idEditeur == null) ? 0 : idEditeur.hashCode());
 		result = prime * result + ((nomEditeur == null) ? 0 : nomEditeur.hashCode());
 		return result;
 	}
 
 	@Override
-	public boolean equals(Object obj)
-	{
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -75,7 +61,10 @@ public class Editeur implements Serializable
 		if (getClass() != obj.getClass())
 			return false;
 		Editeur other = (Editeur) obj;
-		if (idEditeur != other.idEditeur)
+		if (idEditeur == null) {
+			if (other.idEditeur != null)
+				return false;
+		} else if (!idEditeur.equals(other.idEditeur))
 			return false;
 		if (nomEditeur == null) {
 			if (other.nomEditeur != null)
@@ -84,5 +73,7 @@ public class Editeur implements Serializable
 			return false;
 		return true;
 	}
+	
+	
 	
 }

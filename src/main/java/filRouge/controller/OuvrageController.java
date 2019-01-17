@@ -22,7 +22,7 @@ import filRouge.model.Ouvrage;
 import filRouge.repository.OuvrageRepository;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/homebook")
 public class OuvrageController
 {
 
@@ -33,7 +33,7 @@ public class OuvrageController
 	 * Methode READ ALL BOOKS
 	 * @return liste de tous les ouvrages
 	 */
-	@GetMapping("/get/allbook")
+	@GetMapping("/get/allbooks")
 	public ResponseEntity<List<Ouvrage>> getListBook()
 	{
 		List<Ouvrage> listBook = null;
@@ -68,10 +68,10 @@ public class OuvrageController
 		}
 		if (book == null)
 		{
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(book);
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
 		
-		return ResponseEntity.status(HttpStatus.OK).body(null);
+		return ResponseEntity.status(HttpStatus.OK).body(book);
 	}
 	
 	/**
@@ -84,86 +84,86 @@ public class OuvrageController
 	{
 		Ouvrage newBook = null;
 		
-		String titre = book.getTitre();
-		if ((titre == null) || titre.isEmpty())
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message titre");
-		}
+//		String titre = book.getTitre();
+//		if ((titre == null) || titre.isEmpty())
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message titre");
+//		}
+//		
+//		String isbn = book.getIsbn();
+//		if ((isbn == null) || isbn.isEmpty())
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message isbn");
+//		}
 		
-		long isbn = book.getIsbn();
-		if ((isbn == 0))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message isbn");
-		}
+//		String imagecouv = book.getImagecouv();
+//		if ((imagecouv == null) || (imagecouv.isEmpty()))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message imagecouv");
+//		}
 		
-		String imagecouv = book.getImagecouv();
-		if ((imagecouv == null) || (imagecouv.isEmpty()))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message imagecouv");
-		}
-		
-		String sujet = book.getSujet();
-		if ((sujet == null) || (sujet.isEmpty()))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message sujet");
-		}
-		
-		String description = book.getDescription();
-		if ((description == null) || (description.isEmpty()))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message description");
-		}
-		
-		String langue = book.getLangue();
-		if ((langue == null) || (langue.isEmpty()))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message langue");
-		}
-		
-		int anneeParution = book.getAnneeParution();
-		if ((anneeParution == 0))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message anneeParution");
-		}
-		
-		
-		int quantiteStock = book.getQuantiteStock();
-		if ((quantiteStock == 0))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message quantiteStock");
-		}
-		
-		double prixNeuf = book.getPrixNeuf();
-		if ((prixNeuf == 0))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message prixNeuf");
-		}
+//		String sujet = book.getSujet();
+//		if ((sujet == null) || (sujet.isEmpty()))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message sujet");
+//		}
+//		
+//		String description = book.getDescription();
+//		if ((description == null) || (description.isEmpty()))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message description");
+//		}
+//		
+//		String langue = book.getLangue();
+//		if ((langue == null) || (langue.isEmpty()))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message langue");
+//		}
+//		
+//		int anneeParution = book.getAnneeParution();
+//		if ((anneeParution == 0))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message anneeParution");
+//		}
 		
 		
-		double prixVente = book.getPrixVente();
-		if ((prixVente == 0))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message prixVente");
-		}
+//		int quantiteStock = book.getQuantiteStock();
+//		if ((quantiteStock == 0))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message quantiteStock");
+//		}
+		
+//		double prixNeuf = book.getPrixNeuf();
+//		if ((prixNeuf == 0))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message prixNeuf");
+//		}
 		
 		
-		List<Auteur> auteurs = book.getAuteurs();
-		if ((auteurs == null) || (auteurs.isEmpty()))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message auteur");
-		}
+//		double prixVente = book.getPrixVente();
+//		if ((prixVente == 0))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message prixVente");
+//		}
 		
-		Editeur editeur = book.getEditeur();
-		if ((editeur == null))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message editeur");
-		}
 		
-		List<Genre> genres = book.getGenres();
-		if ((genres == null) || (genres.isEmpty()))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message genre");
-		}
+//		List<Auteur> auteurs = book.getAuteurs();
+//		if ((auteurs == null) || (auteurs.isEmpty()))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message auteur");
+//		}
+		
+//		Editeur editeur = book.getEditeur();
+//		if ((editeur == null))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message editeur");
+//		}
+		
+//		List<Genre> genres = book.getGenres();
+//		if ((genres == null) || (genres.isEmpty()))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message genre");
+//		}
 		
 		newBook = bookRepo.save(book);
 		return ResponseEntity.status(HttpStatus.CREATED).body(newBook);
@@ -175,7 +175,7 @@ public class OuvrageController
 	 * @return supprime un ouvrage
 	 */
 	@DeleteMapping("/delete/{idOuvrage}")
-	public ResponseEntity<?> deleteook(@PathVariable Integer idOuvrage)
+	public ResponseEntity<?> deleteBook(@PathVariable Integer idOuvrage)
 	{
 		try
 		{
@@ -193,90 +193,90 @@ public class OuvrageController
 	 * @return modifie un ouvrage
 	 */
 	@PutMapping("/put/{idOuvrage}")
-	public ResponseEntity<?> updateBook(@RequestBody Ouvrage book, @PathVariable Integer idOuvrage)
+	public ResponseEntity<?> updateBook(@RequestBody Ouvrage book, @PathVariable Integer idOuvrage) throws Exception
 	{
 		Ouvrage result = null;
 		
-		String titre = book.getTitre();
-		if ((titre == null) || titre.isEmpty())
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message titre");
-		}
-		
-		long isbn = book.getIsbn();
-		if ((isbn == 0))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message isbn");
-		}
-		
-		String imagecouv = book.getImagecouv();
-		if ((imagecouv == null) || (imagecouv.isEmpty()))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message imagecouv");
-		}
-		
-		String sujet = book.getSujet();
-		if ((sujet == null) || (sujet.isEmpty()))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message sujet");
-		}
-		
-		String description = book.getDescription();
-		if ((description == null) || (description.isEmpty()))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message description");
-		}
-		
-		String langue = book.getLangue();
-		if ((langue == null) || (langue.isEmpty()))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message langue");
-		}
-		
-		int anneeParution = book.getAnneeParution();
-		if ((anneeParution == 0))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message anneeParution");
-		}
-		
-		
-		int quantiteStock = book.getQuantiteStock();
-		if ((quantiteStock == 0))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message quantiteStock");
-		}
-		
-		double prixNeuf = book.getPrixNeuf();
-		if ((prixNeuf == 0))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message prixNeuf");
-		}
-		
-		
-		double prixVente = book.getPrixVente();
-		if ((prixVente == 0))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message prixVente");
-		}
-		
-		
-		List<Auteur> auteurs = book.getAuteurs();
-		if ((auteurs == null) || (auteurs.isEmpty()))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message auteur");
-		}
-		
-		Editeur editeur = book.getEditeur();
-		if ((editeur == null))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message editeur");
-		}
-		
-		List<Genre> genres = book.getGenres();
-		if ((genres == null) || (genres.isEmpty()))
-		{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message genre");
-		}
+//		String titre = book.getTitre();
+//		if ((titre == null) || titre.isEmpty())
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message titre");
+//		}
+//		
+//		String isbn = book.getIsbn();
+//		if ((isbn == null) || isbn.isEmpty())
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message isbn");
+//		}
+//		
+//		String imagecouv = book.getImagecouv();
+//		if ((imagecouv == null) || (imagecouv.isEmpty()))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message imagecouv");
+//		}
+//		
+//		String sujet = book.getSujet();
+//		if ((sujet == null) || (sujet.isEmpty()))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message sujet");
+//		}
+//		
+//		String description = book.getDescription();
+//		if ((description == null) || (description.isEmpty()))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message description");
+//		}
+//		
+//		String langue = book.getLangue();
+//		if ((langue == null) || (langue.isEmpty()))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message langue");
+//		}
+//		
+//		int anneeParution = book.getAnneeParution();
+//		if ((anneeParution == 0))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message anneeParution");
+//		}
+//		
+//		
+//		int quantiteStock = book.getQuantiteStock();
+//		if ((quantiteStock == 0))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message quantiteStock");
+//		}
+//		
+//		double prixNeuf = book.getPrixNeuf();
+//		if ((prixNeuf == 0))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message prixNeuf");
+//		}
+//		
+//		
+//		double prixVente = book.getPrixVente();
+//		if ((prixVente == 0))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message prixVente");
+//		}
+//		
+//		
+//		List<Auteur> auteurs = book.getAuteurs();
+//		if ((auteurs == null) || (auteurs.isEmpty()))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message auteur");
+//		}
+//		
+//		Editeur editeur = book.getEditeur();
+//		if ((editeur == null))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message editeur");
+//		}
+//		
+//		List<Genre> genres = book.getGenres();
+//		if ((genres == null) || (genres.isEmpty()))
+//		{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message genre");
+//		}
 		
 		try
 		{

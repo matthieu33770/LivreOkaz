@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Size;
+
 
 @Entity
 public class Ouvrage implements Serializable
@@ -26,26 +26,19 @@ public class Ouvrage implements Serializable
 	@Column(name = "id_ouvrage")
 	private Integer idOuvrage;
 	
-	@Size(max = 50)
 	private String titre;
 	
-	@Size(max = 13)
-	private long isbn;
+	private String isbn;
 	
-	@Size(max = 100)
 	@Column(name = "image_couv")
 	private String imagecouv;
 	
-	@Size(max = 255)
 	private String sujet;
 	
-	@Size(max = 255)
 	private String description;
 	
-	@Size(max = 10)
 	private String langue;
 	
-	@Size(max = 4)
 	@Column(name = "annee_parution")
 	private int anneeParution;
 	
@@ -75,11 +68,9 @@ public class Ouvrage implements Serializable
 	
 	}
 
-	public Ouvrage(Integer idOuvrage, @Size(max = 50) String titre, @Size(max = 13) int isbn,
-			@Size(max = 100) String imagecouv, @Size(max = 255) String sujet, @Size(max = 255) String description,
-			@Size(max = 10) String langue, @Size(max = 4) int anneeParution, int quantiteStock, double prixNeuf,
-			double prixVente, List<Auteur> auteurs, Editeur editeur, List<Genre> genres)
-	{
+	public Ouvrage(Integer idOuvrage, String titre, String isbn, String imagecouv, String sujet, String description,
+			String langue, int anneeParution, int quantiteStock, double prixNeuf, double prixVente,
+			List<Auteur> auteurs, Editeur editeur, List<Genre> genres) {
 		super();
 		this.idOuvrage = idOuvrage;
 		this.titre = titre;
@@ -97,149 +88,120 @@ public class Ouvrage implements Serializable
 		this.genres = genres;
 	}
 
-	public int getIdOuvrage()
-	{
+	public Integer getIdOuvrage() {
 		return idOuvrage;
 	}
 
-	public void setIdOuvrage(int idOuvrage)
-	{
+	public void setIdOuvrage(Integer idOuvrage) {
 		this.idOuvrage = idOuvrage;
 	}
 
-	public String getTitre()
-	{
+	public String getTitre() {
 		return titre;
 	}
 
-	public void setTitre(String titre)
-	{
+	public void setTitre(String titre) {
 		this.titre = titre;
 	}
 
-	public long getIsbn()
-	{
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn)
-	{
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 
-	public String getImagecouv()
-	{
+	public String getImagecouv() {
 		return imagecouv;
 	}
 
-	public void setImagecouv(String imagecouv)
-	{
+	public void setImagecouv(String imagecouv) {
 		this.imagecouv = imagecouv;
 	}
 
-	public String getSujet()
-	{
+	public String getSujet() {
 		return sujet;
 	}
 
-	public void setSujet(String sujet)
-	{
+	public void setSujet(String sujet) {
 		this.sujet = sujet;
 	}
 
-	public String getDescription()
-	{
+	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description)
-	{
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public String getLangue()
-	{
+	public String getLangue() {
 		return langue;
 	}
 
-	public void setLangue(String langue)
-	{
+	public void setLangue(String langue) {
 		this.langue = langue;
 	}
 
-	public int getAnneeParution()
-	{
+	public int getAnneeParution() {
 		return anneeParution;
 	}
 
-	public void setAnneeParution(int anneeParution)
-	{
+	public void setAnneeParution(int anneeParution) {
 		this.anneeParution = anneeParution;
 	}
 
-	public int getQuantiteStock()
-	{
+	public int getQuantiteStock() {
 		return quantiteStock;
 	}
 
-	public void setQuantiteStock(int quantiteStock)
-	{
+	public void setQuantiteStock(int quantiteStock) {
 		this.quantiteStock = quantiteStock;
 	}
 
-	public double getPrixNeuf()
-	{
+	public double getPrixNeuf() {
 		return prixNeuf;
 	}
 
-	public void setPrixNeuf(double prixNeuf)
-	{
+	public void setPrixNeuf(double prixNeuf) {
 		this.prixNeuf = prixNeuf;
 	}
 
-	public double getPrixVente()
-	{
+	public double getPrixVente() {
 		return prixVente;
 	}
 
-	public void setPrixVente(double prixVente)
-	{
+	public void setPrixVente(double prixVente) {
 		this.prixVente = prixVente;
 	}
 
-	public List<Auteur> getAuteurs()
-	{
+	public List<Auteur> getAuteurs() {
 		return auteurs;
 	}
 
-	public void setAuteurs(List<Auteur> auteurs)
-	{
+	public void setAuteurs(List<Auteur> auteurs) {
 		this.auteurs = auteurs;
 	}
 
-	public Editeur getEditeur()
-	{
+	public Editeur getEditeur() {
 		return editeur;
 	}
 
-	public void setEditeur(Editeur editeur)
-	{
+	public void setEditeur(Editeur editeur) {
 		this.editeur = editeur;
 	}
 
-	public List<Genre> getGenres()
-	{
+	public List<Genre> getGenres() {
 		return genres;
 	}
 
-	public void setGenres(List<Genre> genres)
-	{
+	public void setGenres(List<Genre> genres) {
 		this.genres = genres;
 	}
 
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + anneeParution;
@@ -247,9 +209,9 @@ public class Ouvrage implements Serializable
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((editeur == null) ? 0 : editeur.hashCode());
 		result = prime * result + ((genres == null) ? 0 : genres.hashCode());
-		result = prime * result + idOuvrage;
+		result = prime * result + ((idOuvrage == null) ? 0 : idOuvrage.hashCode());
 		result = prime * result + ((imagecouv == null) ? 0 : imagecouv.hashCode());
-		result = prime * result + (int) (isbn ^ (isbn >>> 32));
+		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
 		result = prime * result + ((langue == null) ? 0 : langue.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(prixNeuf);
@@ -263,8 +225,7 @@ public class Ouvrage implements Serializable
 	}
 
 	@Override
-	public boolean equals(Object obj)
-	{
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -294,14 +255,20 @@ public class Ouvrage implements Serializable
 				return false;
 		} else if (!genres.equals(other.genres))
 			return false;
-		if (idOuvrage != other.idOuvrage)
+		if (idOuvrage == null) {
+			if (other.idOuvrage != null)
+				return false;
+		} else if (!idOuvrage.equals(other.idOuvrage))
 			return false;
 		if (imagecouv == null) {
 			if (other.imagecouv != null)
 				return false;
 		} else if (!imagecouv.equals(other.imagecouv))
 			return false;
-		if (isbn != other.isbn)
+		if (isbn == null) {
+			if (other.isbn != null)
+				return false;
+		} else if (!isbn.equals(other.isbn))
 			return false;
 		if (langue == null) {
 			if (other.langue != null)
@@ -326,5 +293,7 @@ public class Ouvrage implements Serializable
 			return false;
 		return true;
 	}
+
+	
 	
 }
