@@ -75,7 +75,7 @@ public class CommandeController {
 	 * @param commande : the commande information.
 	 * @throws Exception 
 	 */
-	@RequestMapping(value="/commande", method = RequestMethod.POST)
+	@RequestMapping(value="/commande/ajout", method = RequestMethod.POST)
 	public ResponseEntity<?> addCommande(@RequestBody Commande commande){
 		Commande resultCommande = null;
 		
@@ -120,7 +120,7 @@ public class CommandeController {
 	 * @param id : the id of commande.
 	 * @throws Exception 
 	 */
-	@RequestMapping(value = "/commande/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/commande/modifier/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<?> updateCommande(@RequestBody Commande commande, @PathVariable Integer id) throws Exception {
 		Commande resultCommande = null;
 		System.out.println(">> "+commande);
