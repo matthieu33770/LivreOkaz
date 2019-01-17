@@ -32,12 +32,12 @@ Puis création des boutons et des fonctions associées pour réaliser les opéra
 
 ## Dépendances : 
 
-Les dépendances utilisées sont les suivantes :
-	- spring-boot-starter-jdbc V 2.1.1
-	- spring-boot-starter-data-jpa V 2.1.1
-	- spring-boot-starter-web V 2.1.0
-	- mysql-connector-java V 5.1.47
-	- spring-boot-devtools V 2.1.1
+Les dépendances utilisées sont les suivantes :<br/>
+	- spring-boot-starter-jdbc V 2.1.1<br/>
+	- spring-boot-starter-data-jpa V 2.1.1<br/>
+	- spring-boot-starter-web V 2.1.0<br/>
+	- mysql-connector-java V 5.1.47<br/>
+	- spring-boot-devtools V 2.1.1<br/>
 
 ## Schéma explicatif :
 ![image](https://github.com/matthieu33770/LivreOkaz/blob/master/src/main/resources/Sch%C3%A9ma%20explicatif.jpg)
