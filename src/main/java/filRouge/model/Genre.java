@@ -23,7 +23,7 @@ public class Genre implements Serializable
 	@Column(name = "id_genre")
 	private int idGenre;
 	
-	@Size(max = 20)
+	@Size(max = 100)
 	@Column(name = "type_genre")
 	private String typeGenre;
 	
@@ -35,32 +35,39 @@ public class Genre implements Serializable
 	
 	}
 
-	public int getIdGenre() {
+	public int getIdGenre()
+	{
 		return idGenre;
 	}
 
-	public void setIdGenre(int idGenre) {
+	public void setIdGenre(int idGenre)
+	{
 		this.idGenre = idGenre;
 	}
 
-	public String getTypeGenre() {
+	public String getTypeGenre()
+	{
 		return typeGenre;
 	}
 
-	public void setTypeGenre(String typeGenre) {
+	public void setTypeGenre(String typeGenre)
+	{
 		this.typeGenre = typeGenre;
 	}
 
-	public List<Ouvrage> getOuvrages() {
+	public List<Ouvrage> getOuvrages()
+	{
 		return ouvrages;
 	}
 
-	public void setOuvrages(List<Ouvrage> ouvrages) {
+	public void setOuvrages(List<Ouvrage> ouvrages)
+	{
 		this.ouvrages = ouvrages;
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idGenre;
@@ -70,7 +77,8 @@ public class Genre implements Serializable
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -92,7 +100,5 @@ public class Genre implements Serializable
 			return false;
 		return true;
 	}
-
-	
 
 }

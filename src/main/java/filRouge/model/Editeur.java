@@ -29,41 +29,35 @@ public class Editeur implements Serializable
 	
 	}
 	
-	
-
-	public Editeur(@Size(max = 20) String nomEditeur) {
+	public Editeur(@Size(max = 20) String nomEditeur)
+	{
 		super();
 		this.nomEditeur = nomEditeur;
 	}
 
-
-
-	public int getIdEditeur() {
+	public int getIdEditeur()
+	{
 		return idEditeur;
 	}
 
-
-
-	public void setIdEditeur(int idEditeur) {
+	public void setIdEditeur(int idEditeur)
+	{
 		this.idEditeur = idEditeur;
 	}
 
-
-
-	public String getNomEditeur() {
+	public String getNomEditeur()
+	{
 		return nomEditeur;
 	}
 
-
-
-	public void setNomEditeur(String nomEditeur) {
+	public void setNomEditeur(String nomEditeur)
+	{
 		this.nomEditeur = nomEditeur;
 	}
 
-
-
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idEditeur;
@@ -71,10 +65,9 @@ public class Editeur implements Serializable
 		return result;
 	}
 
-
-
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -91,9 +84,5 @@ public class Editeur implements Serializable
 			return false;
 		return true;
 	}
-
-
-
-	
 	
 }
