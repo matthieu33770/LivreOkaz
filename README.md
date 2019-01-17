@@ -1,7 +1,7 @@
 # LivreOkaz
-Création d'une app avec utilisation :
-	- en back de SpringBoot et Hibernate avec persistence des données
-	- en front via HTML, CSS et JavaScript
+Création d'une app avec utilisation :<br/>
+	- en back de SpringBoot et Hibernate avec persistence des données<br/>
+	- en front via HTML, CSS et JavaScript<br/>
 
 
 ## Sujet :
