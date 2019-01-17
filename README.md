@@ -17,7 +17,7 @@ Réunion en début de journée pour se coordonner sur les tâches à réaliser d
 https://trello.com/b/SKUzleMh/livrokaz
 
 ## Création du MLD :
-![image](https://github.com/matthieu33770/LivreOkaz/blob/master/src/main/resources/MCD.jpg)
+![image](https://github.com/matthieu33770/LivreOkaz/blob/master/src/main/resources/MCD.png)
 
 ## Principe :
 
