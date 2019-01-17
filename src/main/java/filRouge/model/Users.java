@@ -82,9 +82,7 @@ public class Users implements Serializable{
 	
 	@ManyToOne(cascade = {CascadeType.PERSIST})
 	@JoinColumn(name="id_role")
-	private Role habilitation;
-
-	
+	private Role habilitation;	
 	
 	public String getMdp() {
 		return mdp;

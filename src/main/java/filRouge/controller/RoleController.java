@@ -71,7 +71,7 @@ public class RoleController {
 	 * @param role : the user information.
 	 * @throws Exception 
 	 */
-	@PostMapping("/role")
+	@PostMapping("/role/ajout")
 	public ResponseEntity<?> addRole(@RequestBody Role role){
 		Role resultRole = null;
 		String fonction = role.getFonction();
@@ -94,17 +94,18 @@ public class RoleController {
 	 * @param id : the id of role.
 	 * @throws Exception 
 	 */
-	@PutMapping("/role/{id}")
+	@PutMapping("/role/modifier/{id}")
 	public ResponseEntity<?> updateRole(@RequestBody Role role,@PathVariable Integer id) throws Exception {
 		
 		Role result = null;
+		getRoleById(id);
 
 		String fonction = role.getFonction();
 		if((fonction == null) || (fonction.isEmpty()))
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La fonction n'est pas renseigné");
 		
 		try {
-			result = roleRepository.saveAndFlush(role);
+			result = roleRepository.save(role);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 		}
@@ -117,7 +118,7 @@ public class RoleController {
 	 * @param id : the id of role.
 	 * @throws Exception
 	 */
-	@DeleteMapping("/user/{id}")
+	@DeleteMapping("/role/{id}")
 	public ResponseEntity<?> deleteRole(@PathVariable Integer id){
 		try {
 		roleRepository.deleteById(id);

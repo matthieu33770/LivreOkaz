@@ -93,7 +93,7 @@ public class UserController {
 		 * @param user : the user information.
 		 * @throws Exception 
 		 */
-		@PostMapping("/user")
+		@PostMapping("/user/ajout")
 		public ResponseEntity<?> addUser(@RequestBody Users user){
 			Users resultUser = null;
 			String nom = user.getNom();
@@ -132,7 +132,7 @@ public class UserController {
 		 * @param id : the id of user.
 		 * @throws Exception 
 		 */
-		@PutMapping("/user/{id}")
+		@PutMapping("/user/modifier/{id}")
 		public ResponseEntity<?> updateActor(@RequestBody Users user,@PathVariable Integer id) throws Exception {
 			
 			Users result = null;

@@ -1,7 +1,6 @@
 package filRouge.model;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,7 @@ public class Role implements Serializable{
 	@Size(max = 20)
 	@Column(name="fonction")
 	private String fonction;
-
+	
 	public Integer getIdRole() {
 		return idRole;
 	}
