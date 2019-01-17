@@ -37,7 +37,6 @@ public class Users implements Serializable{
 	@Column(name = "email")
 	private String email;
 	
-	@Size(max = 3)
 	@Column(name = "numeroFacturation")
 	private Integer numeroFacturation;
 	
@@ -48,16 +47,14 @@ public class Users implements Serializable{
 	@Size(max = 255)
 	@Column(name = "complementFacturation")
 	private String complementFacturation;
-	
-	@Size(max = 5)
+
 	@Column(name = "cpFacturation")
 	private Integer cpFacturation;
 	
 	@Size(max = 255)
 	@Column(name = "villeFacturation")
 	private String villeFacturation;
-	
-	@Size(max = 3)
+
 	@Column(name = "numeroLivraison")
 	private Integer numeroLivraison;
 	
@@ -69,7 +66,6 @@ public class Users implements Serializable{
 	@Column(name = "complementLivraison")
 	private String complementLivraison;
 	
-	@Size(max = 5)
 	@Column(name = "cpLivraison")
 	private Integer cpLivraison;
 	
@@ -77,7 +73,6 @@ public class Users implements Serializable{
 	@Column(name = "villeLivraison")
 	private String villeLivraison;
 	
-	@Size(max = 12)
 	@Column(name = "telephone")
 	private Integer telephone;
 	
