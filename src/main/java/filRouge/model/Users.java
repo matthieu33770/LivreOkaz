@@ -85,7 +85,7 @@ public class Users implements Serializable{
 	@Column(name = "mdp")
 	private String mdp;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	@JoinColumn(name="id_role")
 	private Role habilitation;
 
@@ -257,15 +257,13 @@ public class Users implements Serializable{
 		this.habilitation = habilitation;
 	}
 
-	public Users(Integer id, @Size(max = 100) String nom, @Size(max = 100) String prenom, @Size(max = 255) String email,
-			@Size(max = 50) String mdp, Role habilitation) {
+	public Users(@Size(max = 100) String nom, @Size(max = 100) String prenom, @Size(max = 255) String email,
+			@Size(max = 50) String mdp) {
 		super();
-		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.mdp = mdp;
-		this.habilitation = habilitation;
 	}
 
 	
