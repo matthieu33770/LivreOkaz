@@ -24,7 +24,7 @@ public class Ouvrage implements Serializable
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "id_ouvrage")
-	private int idOuvrage;
+	private Integer idOuvrage;
 	
 	@Size(max = 50)
 	private String titre;
@@ -58,7 +58,7 @@ public class Ouvrage implements Serializable
 	@Column(name = "prix_vente")
 	private double prixVente;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "ouvrage_auteur", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_auteur"))
 	private List<Auteur> auteurs;
 	
@@ -66,7 +66,7 @@ public class Ouvrage implements Serializable
 	@JoinColumn(name="idEditeur")
 	private Editeur editeur;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "ouvrage_genre", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_genre"))
 	private List<Genre> genres;
 	
@@ -75,7 +75,7 @@ public class Ouvrage implements Serializable
 	
 	}
 
-	public Ouvrage(int idOuvrage, @Size(max = 50) String titre, @Size(max = 13) int isbn,
+	public Ouvrage(Integer idOuvrage, @Size(max = 50) String titre, @Size(max = 13) int isbn,
 			@Size(max = 100) String imagecouv, @Size(max = 255) String sujet, @Size(max = 255) String description,
 			@Size(max = 10) String langue, @Size(max = 4) int anneeParution, int quantiteStock, double prixNeuf,
 			double prixVente, List<Auteur> auteurs, Editeur editeur, List<Genre> genres)

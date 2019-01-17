@@ -21,17 +21,17 @@ public class Role implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_role")
-	private long idRole;
+	private Integer idRole;
 	
 	@Size(max = 20)
 	@Column(name="fonction")
 	private String fonction;
 
-	public long getIdRole() {
+	public Integer getIdRole() {
 		return idRole;
 	}
 
-	public void setIdRole(long idRole) {
+	public void setIdRole(Integer idRole) {
 		this.idRole = idRole;
 	}
 
@@ -46,12 +46,12 @@ public class Role implements Serializable{
 	public Role() {
 	}
 
-	public Role(long idRole, @Size(max = 10) String fonction) {
+	public Role(Integer idRole, String fonction) {
 		this.idRole = idRole;
 		this.fonction = fonction;
 	}
 
-	public Role(@Size(max = 10) String fonction) {
+	public Role(String fonction) {
 		this.fonction = fonction;
 	}
 }

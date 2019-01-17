@@ -13,15 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import filRouge.model.Role;
 import filRouge.model.Users;
 import filRouge.repository.UsersRepository;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/homeuser")
 public class UserController {
 
 		@Autowired
@@ -97,7 +94,7 @@ public class UserController {
 		 * @throws Exception 
 		 */
 		@PostMapping("/user")
-		public ResponseEntity<?> addAUser(@RequestBody Users user){
+		public ResponseEntity<?> addUser(@RequestBody Users user){
 			Users resultUser = null;
 			String nom = user.getNom();
 			
@@ -121,7 +118,7 @@ public class UserController {
 			
 			
 			try {
-				resultUser = usersRepository.save(user);
+				resultUser = usersRepository.saveAndFlush(user);
 			} catch (Exception e) {
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 			}
