@@ -29,13 +29,14 @@ Puis création des boutons et des fonctions associées pour réaliser les opéra
 	- PUT : Modification des données en fonction d'un paramètre<br/>
 	- POST : ajout dans une table<br/>
 	- DELETE : suppression des données dans une table<br/>
+	
+Pour cette version initiale, les tests de ces méthodes CRUD sont réalisés avec le logiciel POSTMAN
 
 ## Dépendances : 
 
 Les dépendances utilisées sont les suivantes :<br/>
-	- spring-boot-starter-jdbc V 2.1.1<br/>
 	- spring-boot-starter-data-jpa V 2.1.1<br/>
-	- spring-boot-starter-web V 2.1.0<br/>
+	- spring-boot-starter-web V 2.1.1<br/>
 	- mysql-connector-java V 5.1.47<br/>
 	- spring-boot-devtools V 2.1.1<br/>
 
