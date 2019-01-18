@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.validation.constraints.Size;
 
 @Entity
 public class Auteur implements Serializable
@@ -19,15 +18,13 @@ public class Auteur implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_auteur")
 	private int idAuteur;
-	
-	@Size(max = 20)
+
 	@Column(name = "nom_auteur")
 	private String nomAuteur;
-	
-	@Size(max = 20)
+
 	@Column(name = "prenom_auteur")
 	private String prenomAuteur;
 	

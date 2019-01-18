@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Ouvrage implements Serializable
@@ -51,14 +53,18 @@ public class Ouvrage implements Serializable
 	@Column(name = "prix_vente")
 	private double prixVente;
 	
+	
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "ouvrage_auteur", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_auteur"))
 	private List<Auteur> auteurs;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idEditeur")
 	private Editeur editeur;
 	
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "ouvrage_genre", joinColumns = @JoinColumn(name = "id_ouvrage"), inverseJoinColumns = @JoinColumn(name = "id_genre"))
 	private List<Genre> genres;

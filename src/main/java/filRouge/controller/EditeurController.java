@@ -95,7 +95,7 @@ public class EditeurController
 	 * @return supprime un editeur
 	 */
 	@DeleteMapping("/delete/{idEditeur}")
-	public ResponseEntity<?> deleteook(@PathVariable Integer idEditeur)
+	public ResponseEntity<?> deleteEditor(@PathVariable Integer idEditeur)
 	{
 		try
 		{
