@@ -32,11 +32,11 @@ public class Commande implements Serializable{
 	private Date date;
 	
 	@Size(max = 10)
-	@Column(name = "prixHT")
+	@Column(name = "prixht")
 	private Double prixHT;
 	
 	@Size(max = 10)
-	@Column(name = "prixTTC")
+	@Column(name = "prixttc")
 	private Double prixTTC;
 	
 	@Size(max = 10)
@@ -44,7 +44,7 @@ public class Commande implements Serializable{
 	private Double tva;
 	
 	@Size(max = 10)
-	@Column(name = "fraisDePort")
+	@Column(name = "frais_de_port")
 	private Double fraisDePort;
 	
 	@Size(max = 10)
@@ -123,20 +123,17 @@ public class Commande implements Serializable{
 		this.idClient = idClient;
 	}
 
-	public Commande(int idCommande, @Size(max = 10) Date date, @Size(max = 10) Double prixHT,
-			@Size(max = 10) Double prixTTC, @Size(max = 10) Double tva, @Size(max = 10) Double fraisDePort,
-			@Size(max = 10) Double total, Users idClient, Users nomClient, Users prenomClient, Users numeroFacturation,
-			Users rueFacturation, Users complementFacturation, Users cpFacturation, Users villeFacturation,
-			Users numeroLivraison, Users rueLivraison, Users complementLivraison, Users cpLivraison,
-			Users villeLivraison, List<Ouvrage> ouvrages, List<Ouvrage> quantite) {
+	public Commande(int idCommande, @Size(max = 10) Date date, @Size(max = 10) Double fraisDePort,
+			@Size(max = 10) Double prixHT, @Size(max = 10) Double prixTTC, @Size(max = 10) Double total, 
+			@Size(max = 10) Double tva, Users idClient) {
 		super();
 		this.idCommande = idCommande;
 		this.date = date;
+		this.fraisDePort = fraisDePort;
 		this.prixHT = prixHT;
 		this.prixTTC = prixTTC;
-		this.tva = tva;
-		this.fraisDePort = fraisDePort;
 		this.total = total;
+		this.tva = tva;	
 		this.idClient = idClient;
 
 	}	

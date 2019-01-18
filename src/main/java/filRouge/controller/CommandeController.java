@@ -75,16 +75,16 @@ public class CommandeController {
 	 * @param commande : the commande information.
 	 * @throws Exception 
 	 */
-	@RequestMapping(value="/commande/ajout", method = RequestMethod.POST)
+	@RequestMapping(value="/commande", method = RequestMethod.POST)
 	public ResponseEntity<?> addCommande(@RequestBody Commande commande){
 		Commande resultCommande = null;
 		
 		Date date = commande.getDate();
+		Double fraisDePort = commande.getFraisDePort();
 		Double prixHT = commande.getPrixHT();
 		Double prixTTC = commande.getPrixTTC();
-		Double tva = commande.getTva();
-		Double fraisDePort = commande.getFraisDePort();
 		Double total = commande.getTotal();
+		Double tva = commande.getTva();
 		Users idClient = commande.getIdClient();
 		
 		System.out.println(">> "+commande);
@@ -141,6 +141,19 @@ public class CommandeController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(resultCommande);
 		
 		
+	}
+	
+	@RequestMapping(value = "/commande/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<?> deleteCommande(@PathVariable Integer id) {		
+		System.out.println(">> ok findOne");
+		
+		try {
+			commandeRepository.deleteById(id);
+			} catch (Exception e) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+			}
+			
+			return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 
 }
