@@ -27,27 +27,21 @@ public class Commande implements Serializable{
 	@Column(name = "id_commande")
 	private int idCommande;
 	
-	@Size(max = 10)
 	@Column(name = "date")
 	private Date date;
 	
-	@Size(max = 10)
 	@Column(name = "prixht")
 	private Double prixHT;
 	
-	@Size(max = 10)
 	@Column(name = "prixttc")
 	private Double prixTTC;
 	
-	@Size(max = 10)
 	@Column(name = "tva")
 	private Double tva;
 	
-	@Size(max = 10)
 	@Column(name = "frais_de_port")
 	private Double fraisDePort;
 	
-	@Size(max = 10)
 	@Column(name = "total")
 	private Double total;
 	

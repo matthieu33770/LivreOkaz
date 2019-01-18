@@ -19,7 +19,7 @@ import filRouge.repository.CommandeRepository;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/homecommande")
 public class CommandeController {
 
 	@Autowired
@@ -75,7 +75,7 @@ public class CommandeController {
 	 * @param commande : the commande information.
 	 * @throws Exception 
 	 */
-	@RequestMapping(value="/commande", method = RequestMethod.POST)
+	@RequestMapping(value="/commande/ajout", method = RequestMethod.POST)
 	public ResponseEntity<?> addCommande(@RequestBody Commande commande){
 		Commande resultCommande = null;
 		
@@ -85,7 +85,7 @@ public class CommandeController {
 		Double prixTTC = commande.getPrixTTC();
 		Double total = commande.getTotal();
 		Double tva = commande.getTva();
-		Users idClient = commande.getIdClient();
+		//Users idClient = commande.getIdClient();
 		
 		System.out.println(">> "+commande);
 		
@@ -101,8 +101,8 @@ public class CommandeController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The fraisDePort is not set !");
 		if(total == null)
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The total is not set !");
-		if(idClient == null)
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The idClient is not set !");
+		//if(idClient == null)
+			//return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The idClient is not set !");
 		
 		try {
 			resultCommande = commandeRepository.saveAndFlush(commande);
