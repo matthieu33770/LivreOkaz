@@ -33,7 +33,7 @@ public class OuvrageController
 	 * Methode READ ALL BOOKS
 	 * @return liste de tous les ouvrages
 	 */
-	@GetMapping("/get/allbooks")
+	@GetMapping("/ouvrage/allbooks")
 	public ResponseEntity<List<Ouvrage>> getListBook()
 	{
 		List<Ouvrage> listBook = null;
@@ -54,7 +54,7 @@ public class OuvrageController
 	 * @param idOuvrage
 	 * @return un ouvrage
 	 */
-	@GetMapping("/get/onebook/{idOuvrage}")
+	@GetMapping("/ouvrage/onebook/{idOuvrage}")
 	public ResponseEntity<?> getOneBook(@PathVariable Integer idOuvrage)
 	{
 		Optional<Ouvrage> book = null;
@@ -79,7 +79,7 @@ public class OuvrageController
 	 * @param information ouvrage
 	 * @return ajoute un ouvrage
 	 */
-	@PostMapping("/post")
+	@PostMapping("/ouvrage/createbook")
 	public ResponseEntity<?> addBook(@RequestBody Ouvrage book)
 	{
 		Ouvrage newBook = null;
@@ -174,7 +174,7 @@ public class OuvrageController
 	 * @param idOuvrage
 	 * @return supprime un ouvrage
 	 */
-	@DeleteMapping("/delete/{idOuvrage}")
+	@DeleteMapping("/ouvrage/delete/{idOuvrage}")
 	public ResponseEntity<?> deleteBook(@PathVariable Integer idOuvrage)
 	{
 		try
@@ -192,7 +192,7 @@ public class OuvrageController
 	 * @param information ouvrage et idOuvrage
 	 * @return modifie un ouvrage
 	 */
-	@PutMapping("/put/{idOuvrage}")
+	@PutMapping("/ouvrage/modifybook/{idOuvrage}")
 	public ResponseEntity<?> updateBook(@RequestBody Ouvrage book, @PathVariable Integer idOuvrage) throws Exception
 	{
 		Ouvrage result = null;
