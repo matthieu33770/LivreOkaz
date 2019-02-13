@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import filRouge.repository.UsersRepository;
 
 @RestController
 @RequestMapping("/homeuser")
+@CrossOrigin("http://localhost:4200")
 public class UserController {
 
 		@Autowired
@@ -99,22 +101,22 @@ public class UserController {
 			String nom = user.getNom();
 			
 			if((nom == null) || (nom.isEmpty()))
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Le nom n'est pas renseigné");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Le nom n'est pas renseignï¿½");
 			
 			String prenom = user.getPrenom();
 			
 			if((prenom == null) || (prenom.isEmpty()))
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Le prenom n'est pas renseigné");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Le prenom n'est pas renseignï¿½");
 			
 			String email = user.getEmail();
 			
 			if((email == null) || (email.isEmpty()))
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("L'email n'est pas renseigné");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("L'email n'est pas renseignï¿½");
 			
 			String mdp = user.getMdp();
 			
 			if((mdp == null) || (mdp.isEmpty()))
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Le mdp n'est pas renseigné");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Le mdp n'est pas renseignï¿½");
 			
 			
 			try {
@@ -139,11 +141,11 @@ public class UserController {
 
 			String nom = user.getNom();
 			if((nom == null) || (nom.isEmpty()))
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Le nom n'est pas renseigné");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Le nom n'est pas renseignï¿½");
 			
 			String prenom = user.getPrenom();
 			if((prenom == null) || (prenom.isEmpty()))
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Le prénom n'est pas renseigné");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Le prï¿½nom n'est pas renseignï¿½");
 			
 			try {
 				result = usersRepository.save(user);

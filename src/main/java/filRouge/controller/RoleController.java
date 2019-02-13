@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import filRouge.repository.RoleRepository;
 
 @RestController
 @RequestMapping("/homerole")
+@CrossOrigin("http://localhost:4200")
 public class RoleController {
 
 	@Autowired
@@ -77,7 +79,7 @@ public class RoleController {
 		String fonction = role.getFonction();
 		
 		if((fonction == null) || (fonction.isEmpty()))
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La fonction n'est pas renseignée");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La fonction n'est pas renseignï¿½e");
 
 		try {
 			resultRole = roleRepository.saveAndFlush(role);
@@ -102,7 +104,7 @@ public class RoleController {
 
 		String fonction = role.getFonction();
 		if((fonction == null) || (fonction.isEmpty()))
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La fonction n'est pas renseigné");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La fonction n'est pas renseignï¿½");
 		
 		try {
 			result = roleRepository.save(role);
