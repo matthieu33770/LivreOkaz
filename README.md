@@ -54,3 +54,5 @@ Nous avons utilisé Material d'Angular pour aider à la mise en forme des templa
 Sur la liste des ourvrages, nous avons utilisé une boucle ngFor dans le template pour afficher l'ensembles des ouvrages.
 
 L'ensemble des composants sont reliés par le module app-routing où sont déclarés les différentes routes internes en Angular.
+
+![image](https://github.com/matthieu33770/LivreOkaz/blob/master/src/main/resources/Sch%C3%A9ma%20Angular.JPG)
